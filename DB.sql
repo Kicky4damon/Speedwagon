@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema speedwagon
 -- -----------------------------------------------------
 
@@ -52,41 +55,6 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `speedwagon`.`cartegory`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `speedwagon`.`cartegory` (
-  `id` INT NOT NULL,
-  `board_num` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_cartegory_board1_idx` (`board_num` ASC) VISIBLE,
-  CONSTRAINT `fk_cartegory_board1`
-    FOREIGN KEY (`board_num`)
-    REFERENCES `speedwagon`.`board` (`num`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
-
--- -----------------------------------------------------
--- Table `speedwagon`.` interest`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `speedwagon`.` interest` (
-  `id` INT NOT NULL,
-  `cartegory_id` INT NOT NULL,
-  `member_id` VARCHAR(30) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_ interest_cartegory1_idx` (`cartegory_id` ASC) VISIBLE,
-  INDEX `fk_ interest_member1_idx` (`member_id` ASC) VISIBLE,
-  CONSTRAINT `fk_ interest_cartegory1`
-    FOREIGN KEY (`cartegory_id`)
-    REFERENCES `speedwagon`.`cartegory` (`id`),
-  CONSTRAINT `fk_ interest_member1`
-    FOREIGN KEY (`member_id`)
-    REFERENCES `speedwagon`.`member` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb3;
-
-
--- -----------------------------------------------------
 -- Table `speedwagon`.`article`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `speedwagon`.`article` (
@@ -118,6 +86,41 @@ CREATE TABLE IF NOT EXISTS `speedwagon`.`art_like` (
     FOREIGN KEY (`article_id`)
     REFERENCES `speedwagon`.`article` (`id`),
   CONSTRAINT `fk_art_like_member1`
+    FOREIGN KEY (`member_id`)
+    REFERENCES `speedwagon`.`member` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `speedwagon`.`cartegory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `speedwagon`.`cartegory` (
+  `id` INT NOT NULL,
+  `board_num` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_cartegory_board1_idx` (`board_num` ASC) VISIBLE,
+  CONSTRAINT `fk_cartegory_board1`
+    FOREIGN KEY (`board_num`)
+    REFERENCES `speedwagon`.`board` (`num`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `speedwagon`.`interest`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `speedwagon`.`interest` (
+  `id` INT NOT NULL,
+  `cartegory_id` INT NOT NULL,
+  `member_id` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ interest_cartegory1_idx` (`cartegory_id` ASC) VISIBLE,
+  INDEX `fk_ interest_member1_idx` (`member_id` ASC) VISIBLE,
+  CONSTRAINT `fk_ interest_cartegory1`
+    FOREIGN KEY (`cartegory_id`)
+    REFERENCES `speedwagon`.`cartegory` (`id`),
+  CONSTRAINT `fk_ interest_member1`
     FOREIGN KEY (`member_id`)
     REFERENCES `speedwagon`.`member` (`id`))
 ENGINE = InnoDB
