@@ -58,7 +58,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- Table `speedwagon`.`article`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `speedwagon`.`article` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `member_m_id` VARCHAR(30) NOT NULL,
   `content` TEXT NULL DEFAULT NULL,
   `board_num` INT NOT NULL,
