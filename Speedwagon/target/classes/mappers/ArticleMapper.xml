@@ -5,11 +5,33 @@
 
 <mapper namespace="kr.co.hong.ArticleMapper">
 
-<!--  댓글 불러오기 -->
 
+
+<!--  댓글 불러오기 -->
 	<select id="article_load">
 	select *
 	from article where board_num = #{board_num}
 	</select>
+	
+<!--  댓글 모두 보기 -->
+	<select id="article_">
+	select *
+	from article where id = #{id}
+	</select>
 
+<!--  댓글 작성 -->
+	<insert id="article_write">
+	insert into article (title, content, member_nickname, cnt)
+		values(#{title}, #{content}, #{member_nickname}, #{cnt})
+	</insert>
+
+<!--  댓글 수정-->
+	<update id="article_update">
+	update article (title, content,) values(#{title}, #{content)
+	</update>
+	
+<!-- 댓글 삭제 -->
+	<delete id="article_delete">
+	delete from article where id = #{id}
+	</delete>
 </mapper>
