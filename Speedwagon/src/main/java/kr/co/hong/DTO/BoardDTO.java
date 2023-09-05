@@ -4,17 +4,17 @@ public class BoardDTO {
 	private int num;
 	private String title;
 	private String content;
-	private String writer;
-	/*private Date date;*/
+	private String member_nickname;
+	private String date;
 	private int cnt;
-	private String like;
-	private int category;
-	private String member_id;
+	
+	
+	
 	
 	@Override
 	public String toString() {
-		return "BoardDTO [num=" + num + ", title=" + title + ", content=" + content + ", writer=" + writer + ", cnt="
-				+ cnt + ", like=" + like + ", category=" + category + ", member_id=" + member_id + "]";
+		return "BoardDTO [num=" + num + ", title=" + title + ", content=" + content + ", member_nickname="
+				+ member_nickname + ", date=" + date + ", cnt=" + cnt + "]";
 	}
 	public int getNum() {
 		return num;
@@ -34,11 +34,17 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWriter() {
-		return writer;
+	public String getMember_nickname() {
+		return member_nickname;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public int getCnt() {
 		return cnt;
@@ -46,22 +52,6 @@ public class BoardDTO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public String getLike() {
-		return like;
-	}
-	public void setLike(String like) {
-		this.like = like;
-	}
-	public int getCategory() {
-		return category;
-	}
-	public void setCategory(int category) {
-		this.category = category;
-	}
-	public String getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
+	
 }
+	

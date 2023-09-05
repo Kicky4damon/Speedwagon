@@ -8,19 +8,19 @@
 
 
 <!--  댓글 불러오기 -->
-	<select id="article_load">
+	<select id="article_load" resultType="ArticleDTO">
 	select *
 	from article where board_num = #{board_num}
 	</select>
 	
 <!--  댓글 모두 보기 -->
-	<select id="article_">
+	<select id="article_All" resultType="ArticleDTO">
 	select *
 	from article where id = #{id}
 	</select>
 
 <!--  댓글 작성 -->
-	<insert id="article_write">
+	<insert id="article_write" parameterType="ArticleDTO">
 	insert into article (title, content, member_nickname, cnt)
 		values(#{title}, #{content}, #{member_nickname}, #{cnt})
 	</insert>

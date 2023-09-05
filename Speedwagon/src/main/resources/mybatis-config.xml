@@ -4,4 +4,17 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 	
 	<configration>
+	<!-- 
+	<TypeAlias>
+	<TypeAlias type="kr.co.hong.DTO.ArticleDTO" alias="ArticleDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.ArticleLikeDTO" alias="ArticleLikeDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.BoardDTO" alias="BoardDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.CategoryDTO" alias="CategoryDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.InterestDTO" alias="InterestDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.LikeDTO" alias="LikeDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.MemberDTO" alias="MemberDTO"/>
+	<TypeAlias type="kr.co.hong.DTO.RoleDTO" alias="RoleDTO"/>
+		
+	</TypeAlias>
+	-->
 	</configration>
