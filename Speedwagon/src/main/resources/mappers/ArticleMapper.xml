@@ -5,8 +5,6 @@
 
 <mapper namespace="kr.co.hong.ArticleMapper">
 
-
-
 <!--  댓글 불러오기 -->
 	<select id="article_load" resultType="ArticleDTO">
 	select *

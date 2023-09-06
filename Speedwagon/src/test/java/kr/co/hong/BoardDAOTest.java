@@ -19,7 +19,7 @@ public class BoardDAOTest {
 	@Test
 	public void TestBoardDetail() {
 		System.out.println("Test...............................");
-		dao.board_detail(1);
+		System.out.println(dao.board_detail(1));
 	}
 	
 

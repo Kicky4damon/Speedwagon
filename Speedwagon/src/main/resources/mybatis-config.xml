@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configration
-	PUBLIC "-//mybatis.org//DTD config 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <!--  mybatis-conmfig.xml이 달랐음. TypeAlias가 아니라 소문자 typeAlias.
+	서버 utf-8 필터 지움. com.mysql.jdbc.Driver를 com.mysql.cj.jdbc.Driver로. -->
 	
-	<configration>
-	<!-- 
-	<TypeAlias>
-	<TypeAlias type="kr.co.hong.DTO.ArticleDTO" alias="ArticleDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.ArticleLikeDTO" alias="ArticleLikeDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.BoardDTO" alias="BoardDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.CategoryDTO" alias="CategoryDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.InterestDTO" alias="InterestDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.LikeDTO" alias="LikeDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.MemberDTO" alias="MemberDTO"/>
-	<TypeAlias type="kr.co.hong.DTO.RoleDTO" alias="RoleDTO"/>
-		
-	</TypeAlias>
-	-->
-	</configration>
+<configuration>
+	<typeAliases>
+	<typeAlias type="kr.co.hong.DTO.ArticleDTO" alias="ArticleDTO"/>
+	<typeAlias type="kr.co.hong.DTO.ArticleLikeDTO" alias="ArticleLikeDTO"/>
+	<typeAlias type="kr.co.hong.DTO.BoardDTO" alias="BoardDTO"/>
+	<typeAlias type="kr.co.hong.DTO.CategoryDTO" alias="CategoryDTO"/>
+	<typeAlias type="kr.co.hong.DTO.InterestDTO" alias="InterestDTO"/>
+	<typeAlias type="kr.co.hong.DTO.LikeDTO" alias="LikeDTO"/>
+	<typeAlias type="kr.co.hong.DTO.MemberDTO" alias="MemberDTO"/>
+	<typeAlias type="kr.co.hong.DTO.RoleDTO" alias="RoleDTO"/>		
+	</typeAliases>
+</configuration>

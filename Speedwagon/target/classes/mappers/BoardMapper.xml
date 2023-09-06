@@ -6,19 +6,19 @@
 <mapper namespace="kr.co.hong.mappers.BoardMapper">
 
 	<!-- 게시판 전체 불러오기 -->
-	<select id="board_listAll" resultType="kr.co.hong.DTO.BoardDTO">
+	<select id="board_listAll" resultType="BoardDTO">
 		select *
 		from board
 	</select>
 
 	<!-- 게시물 상세보기 -->
-	<select id="board_detail" resultType="kr.co.hong.DTO.BoardDTO">
+	<select id="board_detail" resultType="BoardDTO">
 		select * from board
 		where num = #{num}
 	</select>
 
 	<!-- 게시물 작성 -->
-	<insert id="board_write" parameterType="kr.co.hong.DTO.BoardDTO">
+	<insert id="board_write" parameterType="BoardDTO">
 		insert into board (title, content, writer, date,
 		category, member_id)
 		values(#{title}, #{content}, #{writer}, #{date},
@@ -28,7 +28,7 @@
 	<!-- 게시물 수정 -->
 	<update id="board_update">
 		update board set title = #{title}, content =
-		#{content},
+		#{content}
 		where num = #{num}
 	</update>
 

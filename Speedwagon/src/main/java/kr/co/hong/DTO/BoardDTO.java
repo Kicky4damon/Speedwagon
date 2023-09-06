@@ -9,13 +9,13 @@ public class BoardDTO {
 	private int cnt;
 	
 	
-	
-	
 	@Override
 	public String toString() {
 		return "BoardDTO [num=" + num + ", title=" + title + ", content=" + content + ", member_nickname="
 				+ member_nickname + ", date=" + date + ", cnt=" + cnt + "]";
 	}
+	
+	
 	public int getNum() {
 		return num;
 	}
@@ -52,6 +52,8 @@ public class BoardDTO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	
+	
 	
 }
 	
