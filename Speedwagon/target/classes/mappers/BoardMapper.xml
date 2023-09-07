@@ -19,10 +19,10 @@
 
 	<!-- 게시물 작성 -->
 	<insert id="board_write" parameterType="BoardDTO">
-		insert into board (title, content, writer, date,
-		category, member_id)
-		values(#{title}, #{content}, #{writer}, #{date},
-		#{category}, #{member_id})
+		insert into board (title, content, member_nickname
+		)
+		values(#{title}, #{content}, #{member_nickname}
+	)
 	</insert>
 
 	<!-- 게시물 수정 -->
