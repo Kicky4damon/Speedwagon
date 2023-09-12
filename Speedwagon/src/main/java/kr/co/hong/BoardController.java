@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.hong.DTO.BoardDTO;
 import kr.co.hong.Service.BoardService;
@@ -57,6 +58,10 @@ public String listAll(Locale locale, Model model) {
 	model.addAttribute("list",service.board_ListAll());
 	return "listAll";
 }	
-	
+
+@RequestMapping(value = "/detail", method = RequestMethod.GET)
+public void detail(@RequestParam("num") int num, Model model) {
+	model.addAttribute("board", service.board_detail(num));
+}	
 
 }

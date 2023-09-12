@@ -56,7 +56,7 @@
 			
 			<div class="col-md-4 op-7">
 			<div class="row text-center op-7">
-			<div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">Hits</span> </div>
+			<div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">Likes</span> </div>
 			<div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">${BoardDTO.cnt } Views</span> </div>
 			</div>
 			</div>
