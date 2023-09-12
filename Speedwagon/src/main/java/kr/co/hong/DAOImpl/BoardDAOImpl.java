@@ -37,9 +37,9 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void board_update(int num) {
+	public void board_update(BoardDTO dto) {
 		// TODO Auto-generated method stub
-		sqlsession.update(namespace + ".board_update", num);
+		sqlsession.update(namespace + ".board_update", dto);
 		
 	}
 

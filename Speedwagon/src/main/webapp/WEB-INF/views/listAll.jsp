@@ -76,5 +76,13 @@
 	</div>
 	<%@include file="include/js.jsp"%>
 </body>
+<script>
+	var result = '${msg}';
+	if(result == 'success'){
+		alert("게시물이 등록 되었습니다.");
+	}else if (result == "modify"){ 
+			alert("게시물이 수정 되었습니다.");
+	}
+</script>
 
 </html>

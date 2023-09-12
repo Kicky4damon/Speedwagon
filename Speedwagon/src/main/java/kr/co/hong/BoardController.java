@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.hong.DTO.BoardDTO;
 import kr.co.hong.Service.BoardService;
@@ -26,6 +27,7 @@ public class BoardController {
 @Inject
 private BoardService service;
 
+//글 작성 불러오기
 @RequestMapping(value = "/submit", method = RequestMethod.GET)
 public String BoardSubmitGET(BoardDTO board, Model model) throws Exception {
 	
@@ -33,18 +35,21 @@ public String BoardSubmitGET(BoardDTO board, Model model) throws Exception {
 	return "Board_Submit";
 	
 }
-
+//글 작성 하기
 @RequestMapping(value = "/submit", method = RequestMethod.POST)
-public String BoardSubmitPOST(BoardDTO board, Model model) throws Exception {
+public String BoardSubmitPOST(BoardDTO board, RedirectAttributes rttr) throws Exception {
 	board.setMember_nickname("koko");
 	logger.info("register post ...........");
 	logger.info(board.toString());
 	service.board_write(board);
 	
+	rttr.addFlashAttribute("msg", "success");
+	
 	return "redirect:/listAll";
 	
 	
 }
+//글 목록 불러오기
 @RequestMapping(value = "/listAll", method = RequestMethod.GET)
 public String listAll(Locale locale, Model model) {
 	logger.info("Welcome home! The client locale is {}.", locale);
@@ -58,10 +63,30 @@ public String listAll(Locale locale, Model model) {
 	model.addAttribute("list",service.board_ListAll());
 	return "listAll";
 }	
-
+// 글 상세 확인하기
 @RequestMapping(value = "/detail", method = RequestMethod.GET)
 public void detail(@RequestParam("num") int num, Model model) {
+	BoardDTO dto = service.board_detail(num);
+	dto.setCnt(dto.getCnt()+1);
+	service.board_update(dto);
+	
 	model.addAttribute("board", service.board_detail(num));
 }	
+@RequestMapping(value= "/Board_modify", method = RequestMethod.GET)
+public void modifyGET(int num, Model model) throws Exception{
+	
+	model.addAttribute(service.board_detail(num));
+}
+@RequestMapping(value= "/Board_modify", method = RequestMethod.POST)
+public String modifyPOST(BoardDTO dto,RedirectAttributes rttr) throws Exception{
+	logger.info("mod post.....");
+	
+	service.board_update(dto);
+	
+	rttr.addFlashAttribute("msg", "modify");
+	
+	return "redirect:/listAll";
+}
+
 
 }

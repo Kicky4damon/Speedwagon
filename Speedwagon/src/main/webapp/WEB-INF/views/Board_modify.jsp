@@ -27,7 +27,7 @@
 			<div class="container-fluid">
 				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title fw-semibold mb-4">게시물 쓰기</h5>
+						<h5 class="card-title fw-semibold mb-4">게시물 수정</h5>
 						<div class="card">
 							<div class="card-body">
 								<form role="form" method="post">
@@ -42,21 +42,22 @@
 										<div id="subject" class="form-text">카테고리를 선택해주세요</div>
 									</div>-->
 									<div class="mb-3">
-										<label for="subjectInput" class="form-label">제목</label>
-										<input type="subjectInput" name="title" class="form-control" id="subject_input"
-											aria-describedby="subjectHelp" placeholder="제목을 입력해주세요.">
-										<div id="subject" class="form-text">제목은 필수 항목입니다.</div>
+										<label for="subjectmodify" class="form-label">제목</label>
+										<input type="text" name="title" class="form-control" id="subject_input"
+											aria-describedby="subjectHelp" value="${boardDTO.title }">
+										<div id="subject" class="form-text">수정 할 텍스트를 입력해주세요.</div>
 									</div>
 									<div class="mb-3">
-										<label for="ContentInput" class="form-label">본문내용</label>
+										<label for="Contentmodify" class="form-label">본문내용</label>
 										<div class="text-section col pb-10">
-											<textarea id="contentInput" name="content"class="form-control"
-												placeholder="본문 내용을 입력해주세요" onkeydown="resize(this)"
-												onkeyup="resize(this)"></textarea>
+											<textarea id="contentmodify" name="content"class="form-control"
+												 onkeydown="resize(this)" onkeyup="resize(this)">${boardDTO.content }</textarea>
 										</div>
 									</div>
-									<button type="submit" class="btn btn-outline-primary">글 쓰기</button>
+									<button type="submit" class="btn btn-outline-primary">수정하기</button>
 									<button type="reset" class="btn btn-outline-primary">초기화</button>
+									<button type="button" class="btn btn-outline-primary"
+									onclick="history.back()">뒤로가기</button>
 								</form>
 							</div>
 						</div>

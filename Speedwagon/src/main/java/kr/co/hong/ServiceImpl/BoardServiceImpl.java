@@ -36,9 +36,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void board_update(int num) {
+	public void board_update(BoardDTO dto) {
 		// TODO Auto-generated method stub
-		dao.board_update(num);
+		dao.board_update(dto);
 	}
 
 	@Override

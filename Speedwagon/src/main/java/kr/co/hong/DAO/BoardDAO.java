@@ -16,7 +16,7 @@ public interface BoardDAO {
 	public void board_write(BoardDTO bDTO);
 
 	/* 게시물 수정 */
-	public void board_update(int num);
+	public void board_update(BoardDTO dto);
 	
 	/* 게시물 삭제	 */
 	public void board_delete(int num);
