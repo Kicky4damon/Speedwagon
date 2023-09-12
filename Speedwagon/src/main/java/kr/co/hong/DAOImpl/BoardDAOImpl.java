@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mysql.cj.Session;
+
 import kr.co.hong.DAO.BoardDAO;
 import kr.co.hong.DTO.BoardDTO;
 
@@ -47,6 +49,25 @@ public class BoardDAOImpl implements BoardDAO {
 	public void board_delete(int num) {
 		// TODO Auto-generated method stub
 		sqlsession.delete(namespace + ".board_delete", num);
+		
+	}
+
+	@Override
+	public List<BoardDTO> listAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<BoardDTO> listPage(int page) throws Exception {
+		
+		if (page <= 0) {
+			page = 1;
+		}
+		
+		page = (page - 1) * 10;
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(namespace + ".listPage", page);
 		
 	}
 

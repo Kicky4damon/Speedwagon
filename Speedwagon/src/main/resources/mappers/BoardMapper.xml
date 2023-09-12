@@ -36,5 +36,17 @@
 	<delete id="board_delete">
 		delete from board where num = #{num}
 	</delete>
-
+	<!-- 페이징 처리 -->
+	<select id="listPage" resultType="BoardDTO">
+	<![CDATA[
+	select
+		num, title, content, member_nickname, date, cnt
+	from
+		board
+	where num > 0
+	order by num desc, date desc
+	limit #{page}, 10
+	]]>
+	</select>
+	
 </mapper>
