@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.hong.DAO.BoardDAO;
 import kr.co.hong.DTO.BoardDTO;
+import kr.co.hong.DTO.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -38,6 +39,18 @@ public class BoardDAOTest {
 			LOGGER.info(boardDTO.getNum() + ":" + boardDTO.getTitle());
 		}
 	}
-
+	@Test
+	public void testListCriteria()throws Exception{
+		
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+		
+		List<BoardDTO> list = dao.listCriteria(cri);
+		
+		for (BoardDTO boardDTO : list) {
+			LOGGER.info(boardDTO.getNum() + ":" + boardDTO.getTitle());
+		}
+	}
 	
 }

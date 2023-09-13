@@ -28,7 +28,7 @@
 	<!-- 게시물 수정 -->
 	<update id="board_update">
 		update board set title = #{title}, content =
-		#{content}
+		#{content}, cnt = #{cnt}
 		where num = #{num}
 	</update>
 
@@ -46,6 +46,19 @@
 	where num > 0
 	order by num desc, date desc
 	limit #{page}, 10
+	]]>
+	</select>
+	
+	<!-- 페이징 정보 담는 Criteria = 기준 -->
+	<select id="listCriteria" resultType="BoardDTO">
+	<![CDATA[
+	select
+		num, title, content, member_nickname, date, cnt
+	from
+		board
+	where num > 0
+	order by num desc, date desc
+	limit #{pageStart}, #{perPageNum}
 	]]>
 	</select>
 	

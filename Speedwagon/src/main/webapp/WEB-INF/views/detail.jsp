@@ -64,13 +64,10 @@
 
 
 								<button class="btn btn-outline-primary"
+									onclick="location.href='board_Modify?num=${board.num}'">수정하기
+								</button>
+								<button class="btn btn-outline-primary"
 									onclick="location.href='article_Insert?num=${board.num}&member=${nickname}'">댓글작성
-								</button>
-								<button class="btn btn-outline-primary"
-									onclick="location.href='Board_modify?num=${board.num}'">수정하기
-								</button>
-								<button class="btn btn-outline-primary"
-									onclick="location.href='board_Delete?num=${board.num}'">삭제하기
 								</button>
 								<button type="button" class="btn btn-outline-primary"
 									onclick="history.back()">뒤로가기</button>
@@ -105,13 +102,13 @@
 	</div>
 	<%@include file="include/js.jsp"%>
 </body>
-<!--  Jquery로 표현했을 때 - Onclick으로 해결 함
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		
 		var formobj = $("form[role='form']");
 		console.log(formObj);
-		$(".btn btn-outline-primary").on("click," function(){
+		$(".btn-warning").on("click," function(){
 			formObj.attr("action", "/board/modify");
 			formObj.attr("method", "get");
 			formObj.submit();
@@ -128,5 +125,4 @@
 		
 	});
 </script>
--->
 </html>

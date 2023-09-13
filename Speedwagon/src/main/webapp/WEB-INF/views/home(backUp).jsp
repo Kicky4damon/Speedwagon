@@ -10,15 +10,6 @@
 <body>
 <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
-	<!-- 성공처리 알림 스크립트 -->
-	<script>
-		var result = '${msg}';
-
-		if (result == 'success') {
-			alert("저리가 왼료되었습니다.");
-		}
-	</script>
-	<!-- /성공처리 알림 스크립트 -->
 	
 	<!--  Body Wrapper -->
 	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
@@ -60,14 +51,15 @@
 			<div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
 			<div class="row align-items-center">
 			<div class="col-md-8 mb-3 mb-sm-0">
-			<h5><a href="detail?num=${BoardDTO.num}" class="text-primary">${BoardDTO.title }</a></h5>
+			<h5><a href="detail?ai_id=${BoardDTO.ai_id }" class="text-primary">${BoardDTO.title }</a></h5>
 			<!-- 댓글 미리보기 예시 -->
 			<!-- <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a></div> -->
 			</div>
 			
 			<div class="col-md-4 op-7">
 			<div class="row text-center op-7">
-			<div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">${BoardDTO.cnt } 조회수</span> </div>
+			<div class="col px-1"> <i class="ion-connection-bars icon-1x"></i> <span class="d-block text-sm">${BoardDTO.hitcount } Hits</span> </div>
+			<div class="col px-1"> <i class="ion-ios-eye-outline icon-1x"></i> <span class="d-block text-sm">${BoardDTO.viewcount } Views</span> </div>
 			</div>
 			</div>
 			

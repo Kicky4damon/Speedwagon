@@ -5,6 +5,7 @@ import {ResizeObserver} from '@juggle/resize-observer';
 import canUseDOM from 'can-use-dom';
 import scrollbarWidth from './scrollbar-width';
 import {getElementWindow, getElementDocument} from './helpers';
+
 export default class SimpleBar {
     constructor(element, options) {
         this.el = element;

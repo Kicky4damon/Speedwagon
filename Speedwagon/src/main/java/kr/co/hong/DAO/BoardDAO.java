@@ -3,6 +3,7 @@ package kr.co.hong.DAO;
 import java.util.List;
 
 import kr.co.hong.DTO.BoardDTO;
+import kr.co.hong.DTO.Criteria;
 
 public interface BoardDAO {
 
@@ -22,6 +23,9 @@ public interface BoardDAO {
 	public void board_delete(int num)throws Exception;
 	
 	/* 게시물 페이징 */
-	public List<BoardDTO> listAll()throws Exception;
+	
 	public List<BoardDTO> listPage(int page)throws Exception;
-}
+
+	public List<BoardDTO> listCriteria(Criteria cri)throws Exception;
+	
+}	

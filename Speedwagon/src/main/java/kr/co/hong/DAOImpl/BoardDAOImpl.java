@@ -6,10 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mysql.cj.Session;
 
 import kr.co.hong.DAO.BoardDAO;
 import kr.co.hong.DTO.BoardDTO;
+import kr.co.hong.DTO.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -52,11 +52,6 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
-	@Override
-	public List<BoardDTO> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<BoardDTO> listPage(int page) throws Exception {
@@ -71,6 +66,13 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+	@Override
+	public List<BoardDTO> listCriteria(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlsession.selectList(namespace+".listCriteria", cri);
+	}
+	
 	
 
 }

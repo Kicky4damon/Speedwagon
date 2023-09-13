@@ -2,7 +2,6 @@ package kr.co.hong;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.hong.DTO.BoardDTO;
+import kr.co.hong.DTO.Criteria;
+import kr.co.hong.DTO.PageMaker;
 import kr.co.hong.Service.BoardService;
 
 @Controller
@@ -51,7 +52,7 @@ public String BoardSubmitPOST(BoardDTO board, RedirectAttributes rttr) throws Ex
 }
 //글 목록 불러오기
 @RequestMapping(value = "/listAll", method = RequestMethod.GET)
-public String listAll(Locale locale, Model model) {
+public String listAll(Locale locale, Model model) throws Exception {
 	logger.info("Welcome home! The client locale is {}.", locale);
 	
 	Date date = new Date();
@@ -65,7 +66,7 @@ public String listAll(Locale locale, Model model) {
 }	
 // 글 상세 확인하기
 @RequestMapping(value = "/detail", method = RequestMethod.GET)
-public void detail(@RequestParam("num") int num, Model model) {
+public void detail(@RequestParam("num") int num, Model model) throws Exception {
 	BoardDTO dto = service.board_detail(num);
 	dto.setCnt(dto.getCnt()+1);
 	service.board_update(dto);
@@ -87,6 +88,23 @@ public String modifyPOST(BoardDTO dto,RedirectAttributes rttr) throws Exception{
 	
 	return "redirect:/listAll";
 }
-
+@RequestMapping(value = "/listCri", method = RequestMethod.GET)
+public void listAll(Criteria cri, Model model) throws Exception {
+	
+	logger.info("show list page with Criteria............");
+	
+	model.addAttribute("list", service.listCriteria(cri));
+}
+@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+public void listPage(Criteria cri, Model model) throws Exception{
+	logger.info(cri.toString());
+	
+	model.addAttribute("list", service.listCriteria(cri));
+	PageMaker pageMaker = new PageMaker();
+	pageMaker.setCri(cri);
+	pageMaker.setTotalCount(131);
+	
+	model.addAttribute("pageMaker", pageMaker);
+}
 
 }
