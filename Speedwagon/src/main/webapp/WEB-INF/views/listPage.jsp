@@ -83,31 +83,31 @@
 
 				</div>
 				<div>
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
 
-						<!-- 페이징 Prev 버튼 넘어갈 목록이 있으면 활성/비활  -->
-						<c:if test="${pageMaker.prev}">
-							<li class="page-item"><a class="page-link"
-								href="listCri?page=${pageMaker.startPage - 1}"
-								aria-label="Previous">&laquo;</a></li>
-						</c:if>
+							<!-- 페이징 Prev 버튼 넘어갈 목록이 있으면 활성/비활  -->
+							<c:if test="${pageMaker.prev}">
+								<li class="page-item"><a class="page-link"
+									href="listPage?page=${pageMaker.startPage - 1}"
+									aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+							</c:if>
 
-						<c:forEach begin="${pageMaker.startPage }"
-							end="${pageMaker.endPage }" var="idx">
-							<li class="page-item"
-								<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-								<a class="page-link" href="listCri?page=${idx }">${idx }</a>
-							</li>
-						</c:forEach>
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li class="page-item"><a
+									class="page-link <c:out value="${pageMaker.cri.page == idx?' active':''}"/>"
+									href="listPage?page=${idx }">${idx }</a></li>
+							</c:forEach>
 
-						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<li class="page-item"><a class="page-link"
-								href="listCri?page=${pageMaker.endPage +1}" aria-label="Next">
-								&raquo;</a></li>
-						</c:if>
-					</ul>
-				</nav>
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li class="page-item"><a class="page-link"
+									href="listPage?page=${pageMaker.endPage +1}" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</c:if>
+						</ul>
+					</nav>
 				</div>
 			</div>
 
