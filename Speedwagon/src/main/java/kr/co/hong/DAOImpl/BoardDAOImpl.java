@@ -72,6 +72,12 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlsession.selectList(namespace+".listCriteria", cri);
 	}
+
+	@Override
+	public int countPaging(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(namespace+".countPaging", cri);
+	}
 	
 	
 

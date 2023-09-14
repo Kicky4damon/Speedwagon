@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import kr.co.hong.DAO.BoardDAO;
 import kr.co.hong.DTO.BoardDTO;
@@ -52,5 +54,32 @@ public class BoardDAOTest {
 			LOGGER.info(boardDTO.getNum() + ":" + boardDTO.getTitle());
 		}
 	}
-	
+	@Test
+	public void testURI()throws Exception{
+		
+		UriComponents uriComponents =
+				UriComponentsBuilder.newInstance()
+				.path("detail")
+				.queryParam("num", 12)
+				.queryParam("perPageNum", 20)
+				.build();
+		
+		LOGGER.info("detail?num=12&perPageNum=20");
+		LOGGER.info(uriComponents.toString());
+	}
+	@Test
+	public void testURI2()throws Exception{
+		
+		UriComponents uriComponents2 =
+				UriComponentsBuilder.newInstance()
+				.path("/{module}/{page}")
+				.queryParam("num", 12)
+				.queryParam("perPageNum", 20)
+				.build()
+				.expand("board", "read")
+				.encode();
+		LOGGER.info("/board/read?num=12&perPageNum=20");
+		LOGGER.info(uriComponents2.toString());
+			
+	}
 }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <aside class="left-sidebar">
 	<!-- Sidebar scroll-->
 	<div>
@@ -19,22 +21,22 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">Home</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./index.html" aria-expanded="false"> <span> <i
+					href="./" aria-expanded="false"> <span> <i
 							class="ti ti-layout-dashboard"></i>
-					</span> <span class="hide-menu">Dashboard</span>
+					</span> <span class="hide-menu">대시보드</span>
 				</a></li>
 				<li class="nav-small-cap"><i
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
-					class="hide-menu">UI COMPONENTS</span></li>
+					class="hide-menu">TEST</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./ui-buttons.html" aria-expanded="false"> <span> <i
+					href="./submit" aria-expanded="false"> <span> <i
 							class="ti ti-article"></i>
-					</span> <span class="hide-menu">Buttons</span>
+					</span> <span class="hide-menu">글쓰기</span>
 				</a></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./ui-alerts.html" aria-expanded="false"> <span> <i
+					href="./listPage" aria-expanded="false"> <span> <i
 							class="ti ti-alert-circle"></i>
-					</span> <span class="hide-menu">Alerts</span>
+					</span> <span class="hide-menu">글 목록</span>
 				</a></li>
 				<li class="sidebar-item"><a class="sidebar-link"
 					href="./ui-card.html" aria-expanded="false"> <span> <i

@@ -28,4 +28,7 @@ public interface BoardDAO {
 
 	public List<BoardDTO> listCriteria(Criteria cri)throws Exception;
 	
+	/* 토탈 카운트 페이징*/
+	public int countPaging(Criteria cri)throws Exception;
+	
 }	

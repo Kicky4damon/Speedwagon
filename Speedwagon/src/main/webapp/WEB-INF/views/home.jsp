@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" type="text/css" href="resources/css/icons/tabler-icons/tabler-icons.css" />
+
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 
 <head>
@@ -23,27 +25,6 @@
       
       <div class="container-fluid">
         <!--  Row 1 -->
-        			<div class="col-lg-8 d-flex align-items-stretch" style="user-select: auto;">
-            <div class="card w-100" style="user-select: auto;">
-              <div class="card-body p-4" style="user-select: auto;">
-                <div class="table-responsive" style="user-select: auto;">
-                  <table class="table text-nowrap mb-0 align-middle" style="user-select: auto;">
-                    <tbody style="user-select: auto;">
-                      <tr style="user-select: auto;">
-                      
-                      <!-- 링크 -->
-                      	<a href="listAll">listAll</a><br>
-                      	<a href="listCri">listCri</a><br>
-                      	<a href="submit">글쓰기(submit)</a>
-                      </tr>       
-                      <!-- /링크 -->
-                                      
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
         <div class="row">
           <div class="col-lg-8 d-flex align-items-strech">
             <div class="card w-100">

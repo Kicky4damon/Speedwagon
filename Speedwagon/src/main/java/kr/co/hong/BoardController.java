@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,8 +34,7 @@ private BoardService service;
 public String BoardSubmitGET(BoardDTO board, Model model) throws Exception {
 	
 	logger.info("register get ...........");
-	return "Board_Submit";
-	
+	return "board_submit";
 }
 //글 작성 하기
 @RequestMapping(value = "/submit", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public String BoardSubmitPOST(BoardDTO board, RedirectAttributes rttr) throws Ex
 	
 	rttr.addFlashAttribute("msg", "success");
 	
-	return "redirect:/listAll";
+	return "redirect:/listPage";
 	
 	
 }
@@ -62,23 +62,29 @@ public String listAll(Locale locale, Model model) throws Exception {
 	
 	model.addAttribute("serverTime", formattedDate );
 	model.addAttribute("list",service.board_ListAll());
-	return "listAll";
+	return "listPage";
 }	
 // 글 상세 확인하기
-@RequestMapping(value = "/detail", method = RequestMethod.GET)
+
+@RequestMapping(value = "/detail_page", method = RequestMethod.GET)
 public void detail(@RequestParam("num") int num, Model model) throws Exception {
 	BoardDTO dto = service.board_detail(num);
 	dto.setCnt(dto.getCnt()+1);
 	service.board_update(dto);
 	
 	model.addAttribute("board", service.board_detail(num));
-}	
-@RequestMapping(value= "/Board_modify", method = RequestMethod.GET)
+}
+//글 상세 확인 -> 돌아가기
+
+//글 수정 불러오기
+
+@RequestMapping(value= "/board_modify", method = RequestMethod.GET)
 public void modifyGET(int num, Model model) throws Exception{
 	
 	model.addAttribute(service.board_detail(num));
 }
-@RequestMapping(value= "/Board_modify", method = RequestMethod.POST)
+//글 수정 후 불러오기
+@RequestMapping(value= "/board_modify", method = RequestMethod.POST)
 public String modifyPOST(BoardDTO dto,RedirectAttributes rttr) throws Exception{
 	logger.info("mod post.....");
 	
@@ -86,7 +92,7 @@ public String modifyPOST(BoardDTO dto,RedirectAttributes rttr) throws Exception{
 	
 	rttr.addFlashAttribute("msg", "modify");
 	
-	return "redirect:/listAll";
+	return "redirect:/listPage";
 }
 @RequestMapping(value = "/listCri", method = RequestMethod.GET)
 public void listAll(Criteria cri, Model model) throws Exception {
@@ -96,13 +102,17 @@ public void listAll(Criteria cri, Model model) throws Exception {
 	model.addAttribute("list", service.listCriteria(cri));
 }
 @RequestMapping(value = "/listPage", method = RequestMethod.GET)
-public void listPage(Criteria cri, Model model) throws Exception{
+public void listPage(@ModelAttribute("cri")Criteria cri, Model model) throws Exception{
+	
 	logger.info(cri.toString());
 	
 	model.addAttribute("list", service.listCriteria(cri));
 	PageMaker pageMaker = new PageMaker();
 	pageMaker.setCri(cri);
-	pageMaker.setTotalCount(131);
+	//pageMaker.setTotalCount(131);
+	
+	pageMaker.setTotalCount(service.listCountCriteria(cri));
+	
 	
 	model.addAttribute("pageMaker", pageMaker);
 }

@@ -62,4 +62,16 @@
 	]]>
 	</select>
 	
+	<!-- 보드 토탈  -->
+	<select id="countPaging" resultType="int">
+	<![CDATA[
+	select
+		count(num)
+	from
+		board
+	where
+		num > 0	
+	]]>
+	</select>
+	
 </mapper>

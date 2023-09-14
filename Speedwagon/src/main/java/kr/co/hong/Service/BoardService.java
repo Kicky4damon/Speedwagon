@@ -24,4 +24,7 @@ public interface BoardService {
 	
 	/* 페이징 처리 기준*/
 	public List<BoardDTO> listCriteria(Criteria cri) throws Exception;
+	
+	/* 전체 게시물 숫자 계산 */
+	public int listCountCriteria(Criteria cri) throws Exception;
 }

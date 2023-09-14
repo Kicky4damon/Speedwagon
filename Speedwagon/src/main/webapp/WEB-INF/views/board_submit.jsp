@@ -43,7 +43,7 @@
 									</div>-->
 									<div class="mb-3">
 										<label for="subjectInput" class="form-label">제목</label>
-										<input type="subjectInput" name="title" class="form-control" id="subject_input"
+										<input type="text" name="title" class="form-control" id="subject_input"
 											aria-describedby="subjectHelp" placeholder="제목을 입력해주세요.">
 										<div id="subject" class="form-text">제목은 필수 항목입니다.</div>
 									</div>

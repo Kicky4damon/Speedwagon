@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" type="text/css" href="resources/css/icons/tabler-icons/tabler-icons.css" />
+
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 
 <head>
@@ -48,14 +50,15 @@
 
 						<!-- 게시글 -->
 						<c:forEach items="${list }" var="BoardDTO">
-
 							<div
 								class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
 								<div class="row align-items-center">
 									<div class="col-md-8 mb-3 mb-sm-0">
-										<h5>
-											<a href="detail?num=${BoardDTO.num }" class="text-primary">${BoardDTO.title }</a>
-										</h5>
+									<span class="k1"> No. ${BoardDTO.num }</span>
+									
+										<h5><strong>
+											<a href='detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}' class="text-primary">${BoardDTO.title }</a>
+										</strong></h5>
 										<!-- 댓글 미리보기 예시 -->
 										<!-- <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a></div> -->
 									</div>
@@ -63,11 +66,11 @@
 									<div class="col-md-4 op-7">
 										<div class="row text-center op-7">
 											<div class="col px-1">
-												<i class="ion-connection-bars icon-1x"></i> <span
+												<i class="ti ti-bars"></i> <span
 													class="d-block text-sm">Likes</span>
 											</div>
 											<div class="col px-1">
-												<i class="ion-ios-eye-outline icon-1x"></i> <span
+												<i class="ti ti-eye"></i> <span
 													class="d-block text-sm">${BoardDTO.cnt } Views</span>
 											</div>
 										</div>
@@ -83,7 +86,7 @@
 
 				</div>
 				<div>
-					<nav aria-label="Page navigation example">
+					<nav aria-label="Page navigation exmaple">
 						<ul class="pagination">
 
 							<!-- 페이징 Prev 버튼 넘어갈 목록이 있으면 활성/비활  -->
@@ -97,12 +100,12 @@
 								end="${pageMaker.endPage }" var="idx">
 								<li class="page-item"><a
 									class="page-link <c:out value="${pageMaker.cri.page == idx?' active':''}"/>"
-									href="listPage?page=${idx }">${idx }</a></li>
+									href="listPage?page=${pageMaker.makeQuery(idx) }">${idx }</a></li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="listPage?page=${pageMaker.endPage +1}" aria-label="Next">
+									href="listPage?page=${pageMaker.makeQuery(pageMaker.endPage +1) }" aria-label="Next">
 										<span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>
