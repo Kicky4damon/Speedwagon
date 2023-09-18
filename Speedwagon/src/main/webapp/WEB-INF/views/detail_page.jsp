@@ -61,22 +61,28 @@
 										</tr>
 								</table>
 
-
-
-								<button type="button" class="btn btn-outline-primary goListBtn"
+								<button type="submit" class="btn btn-outline-primary goListBtn" formmethod="POST"
 									onclick="location.href='listPage?page=${cri.page}&perPageNum=${cri.perPageNum}'">목록으로</button>
 									
-								<button class="btn btn-outline-primary modyfyBtn"
-									onclick="location.href='board_modify?num=${board.num}'">수정하기
+								<button type="submit" class="btn btn-outline-primary modyfyBtn" formmethod="POST"
+									onclick="location.href='modifyPage?num=${board.num}'">수정하기
 								</button>
 								
-								<button class="btn btn-outline-primary removeBtn"
-									onclick="location.href='board_delete?num=${board.num}'">삭제하기
+								<button type="submit" class="btn btn-outline-primary removeBtn" formmethod="POST"
+									onclick="location.href='board_delete?num=${board.num}&page=${cri.page }&perPageNum=${cri.perPageNum }'">삭제하기
 								</button>
-								<button class="btn btn-outline-primary articleBtn"
+								<button type="submit" class="btn btn-outline-primary articleBtn" formmethod="POST"
 									onclick="location.href='article_Insert?num=${board.num}&member=${nickname}'">댓글작성
 								</button>
 								
+								<!-- 페이지 뒤에 번호 삽입하는 꼼수 -->
+								<form role="form" action="modifyPage" method="post">
+
+								<input type='hidden' name='num' value="${boardDTO.num}">
+								<input type='hidden' name='page' value="${cri.page}">
+								<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+								
+								</form>
 								
 								<!-- 	
 				<c:forEach var="article" items="${article }">
@@ -115,20 +121,19 @@
 		var formobj = $("form[role='form']");
 		console.log(formObj);
 		$(".modyfyBtn").on("click," function(){
-			formObj.attr("action", "/board/modify");
 			formObj.attr("method", "get");
+			formObj.attr("action", "/board/modify");
 			formObj.submit();
 		});
 		
 		$(".removeBtn").on("click", function(){
+			formObj.attr("method", "post");
 			formObj.attr("action", "/board_delete");
-			formObj.arrt("method", "get");
 			formObj.submit();
 		});
 		
 		$(".goListBtn").on("click", function(){
 			formObj.attr("action", "/board/listPage");
-			formObj.arrt("method", "get");
 			formObj.submit();
 		});
 		

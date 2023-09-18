@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -77,20 +78,22 @@ public void detail(@RequestParam("num") int num, Model model, @ModelAttribute("c
 //글 상세 확인 -> 돌아가기
 
 //글 삭제하기
+
 @RequestMapping(value = "/board_delete", method = RequestMethod.GET)
 public String boardDelete(@RequestParam("num") int num, RedirectAttributes rttr, Criteria cri) throws Exception{
-
 	
 	logger.info("delete post.............");
+	
 	service.board_delete(num);
 	rttr.addAttribute("page", cri.getPage());
 	rttr.addAttribute("perPageNum", cri.getPerPageNum());
 	rttr.addFlashAttribute("msg", "delete");
+	System.out.println(cri);
 	
 	return "redirect:/listPage";
 }
 
-//글 수정 불러오기
+/*//글 수정 불러오기
 
 @RequestMapping(value= "/board_modify", method = RequestMethod.GET)
 public void modifyGET(int num, Model model) throws Exception{
@@ -107,7 +110,30 @@ public String modifyPOST(BoardDTO dto,RedirectAttributes rttr) throws Exception{
 	rttr.addFlashAttribute("msg", "modify");
 	
 	return "redirect:/listPage";
+}*/
+
+// 글 수정 불러오기 Ver.2
+
+@RequestMapping(value = "/modifyPage" , method = RequestMethod.GET)
+public void modifyPagingGET(@RequestParam("num")int num, Model model)throws Exception{
+	
+model.addAttribute(service.board_detail(num));
 }
+
+// 글 업데이트 Ver.2
+@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
+ public String modifyPagingPOST(BoardDTO dto , Criteria cri, RedirectAttributes rttr)throws Exception{
+	
+	
+	service.board_update(dto);
+	rttr.addAttribute("page" , cri.getPage());
+	rttr.addAttribute("perPageNum", cri.getPerPageNum());
+	rttr.addFlashAttribute("msg", "modify");
+	
+	return "redirect:/listPage";
+}
+
+// 글 페이지 번호 확인
 @RequestMapping(value = "/listCri", method = RequestMethod.GET)
 public void listAll(Criteria cri, Model model) throws Exception {
 	
@@ -115,6 +141,8 @@ public void listAll(Criteria cri, Model model) throws Exception {
 	
 	model.addAttribute("list", service.listCriteria(cri));
 }
+
+// 페이지 카운트 
 @RequestMapping(value = "/listPage", method = RequestMethod.GET)
 public void listPage(@ModelAttribute("cri")Criteria cri, Model model) throws Exception{
 	

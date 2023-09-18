@@ -54,10 +54,16 @@
 												 onkeydown="resize(this)" onkeyup="resize(this)">${boardDTO.content }</textarea>
 										</div>
 									</div>
-									<button type="button" class="btn btn-outline-primary backlistBtn"
-									>뒤로가기</button>
-									<button type="submit" class="btn btn-outline-primary submitBtn" formmethod="POST">수정하기</button>
-									<button type="reset" class="btn btn-outline-primary" >초기화</button>
+									<button type="button" class="btn btn-outline-primary backlistBtn">뒤로가기</button>
+									
+									<!-- onclick="history.back() -->
+									
+									<button type="submit" class="btn btn-outline-primary submitBtn">수정하기</button>
+									<button type="reset" class="btn btn-outline-primary">초기화</button>
+									
+									<input type='hidden' name='page' value="${cri.page}">
+									<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+
 								</form>
 							</div>
 						</div>
@@ -80,7 +86,7 @@
 			
 			console.log(formObj);
 			$(".backlistBtn").on("click", function(){
-				self.location ="/board/listPage?page=${cir.page}&perPageNum=${cri.perPageNum}";
+				self.location = "listPage?page=${cri.page}&perPageNum=${cri.perPageNum}";
 			});
 			
 			$(".submitBtn").on("click", function(){
@@ -88,7 +94,6 @@
 			});
 			
 		});
-		
 	</script>
 </body>
 
