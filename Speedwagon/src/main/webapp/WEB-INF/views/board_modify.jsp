@@ -55,7 +55,7 @@
 										</div>
 									</div>
 									<button type="button" class="btn btn-outline-primary"
-									onclick="history.back()">목록으로</button>
+									onclick="history.back()">뒤로가기</button>
 									<button type="submit" class="btn btn-outline-primary">수정하기</button>
 									<button type="reset" class="btn btn-outline-primary">초기화</button>
 								</form>

@@ -64,17 +64,18 @@
 
 
 								<button type="button" class="btn btn-outline-primary goListBtn"
-									onclick="${cri.perPageNum}">목록으로</button>
+									onclick="location.href='listPage?page=${cri.page}&perPageNum=${cri.perPageNum}'">목록으로</button>
 									
+								<button class="btn btn-outline-primary modyfyBtn"
+									onclick="location.href='board_modify?num=${board.num}'">수정하기
+								</button>
+								
 								<button class="btn btn-outline-primary removeBtn"
 									onclick="location.href='board_delete?num=${board.num}'">삭제하기
 								</button>
-								<button type="button" class="btn btn-outline-primary goListBtn"
-									onclick="${cri.perPageNum}">목록으로</button>
 								<button class="btn btn-outline-primary articleBtn"
 									onclick="location.href='article_Insert?num=${board.num}&member=${nickname}'">댓글작성
 								</button>
-								
 								
 								
 								<!-- 	
@@ -119,13 +120,16 @@
 			formObj.submit();
 		});
 		
-		$(".btn-danger").on("click", function(){
-			formObj.attr("action", "/board/remove");
+		$(".removeBtn").on("click", function(){
+			formObj.attr("action", "/board_delete");
+			formObj.arrt("method", "get");
 			formObj.submit();
 		});
 		
-		$(".btn-primary").on("click", function(){
-			self.location = "/board/listAll";
+		$(".goListBtn").on("click", function(){
+			formObj.attr("action", "/board/listPage");
+			formObj.arrt("method", "get");
+			formObj.submit();
 		});
 		
 	});

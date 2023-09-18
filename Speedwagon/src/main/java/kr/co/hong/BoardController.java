@@ -78,15 +78,17 @@ public void detail(@RequestParam("num") int num, Model model, @ModelAttribute("c
 
 //글 삭제하기
 @RequestMapping(value = "/board_delete", method = RequestMethod.GET)
-public String boardDelete(@RequestParam("num") int num, RedirectAttributes rttr) throws Exception{
+public String boardDelete(@RequestParam("num") int num, RedirectAttributes rttr, Criteria cri) throws Exception{
 
 	
 	logger.info("delete post.............");
 	service.board_delete(num);
+	rttr.addAttribute("page", cri.getPage());
+	rttr.addAttribute("perPageNum", cri.getPerPageNum());
 	rttr.addFlashAttribute("msg", "delete");
+	
 	return "redirect:/listPage";
 }
-
 
 //글 수정 불러오기
 
