@@ -66,7 +66,7 @@
 									<div class="col-md-4 op-7">
 										<div class="row text-center op-7">
 											<div class="col px-1">
-												<i class="ti ti-bars"></i> <span
+												<i class="ti ti-thumb-up"></i> <span
 													class="d-block text-sm">Likes</span>
 											</div>
 											<div class="col px-1">
@@ -92,7 +92,7 @@
 							<!-- 페이징 Prev 버튼 넘어갈 목록이 있으면 활성/비활  -->
 							<c:if test="${pageMaker.prev}">
 								<li class="page-item"><a class="page-link"
-									href="listPage?page=${pageMaker.startPage - 1}"
+									href="listPage?=${pageMaker.startPage - 1}"
 									aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 							</c:if>
 
@@ -100,12 +100,12 @@
 								end="${pageMaker.endPage }" var="idx">
 								<li class="page-item"><a
 									class="page-link <c:out value="${pageMaker.cri.page == idx?' active':''}"/>"
-									href="listPage?page=${pageMaker.makeQuery(idx) }">${idx }</a></li>
+									href="listPage${pageMaker.makeQuery(idx) }">${idx }</a></li>
 							</c:forEach>
 
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="listPage?page=${pageMaker.makeQuery(pageMaker.endPage +1) }" aria-label="Next">
+									href="listPage${pageMaker.makeQuery(pageMaker.endPage +1) }" aria-label="Next">
 										<span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>
