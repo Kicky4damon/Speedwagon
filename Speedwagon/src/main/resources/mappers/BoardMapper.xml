@@ -34,8 +34,9 @@
 
 	<!-- 게시물 삭제 -->
 	<delete id="board_delete">
-		delete from board where num = #{num}
+		delete from board where num = #{num} 
 	</delete>
+	
 	<!-- 페이징 처리 -->
 	<select id="listPage" resultType="BoardDTO">
 	<![CDATA[

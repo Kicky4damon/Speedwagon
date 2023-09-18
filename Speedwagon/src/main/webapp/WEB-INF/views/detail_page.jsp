@@ -63,14 +63,20 @@
 
 
 
-								<button class="btn btn-outline-primary"
-									onclick="location.href='board_modify?num=${board.num}'">수정하기
+								<button type="button" class="btn btn-outline-primary goListBtn"
+									onclick="${cri.perPageNum}">목록으로</button>
+									
+								<button class="btn btn-outline-primary removeBtn"
+									onclick="location.href='board_delete?num=${board.num}'">삭제하기
 								</button>
-								<button class="btn btn-outline-primary"
+								<button type="button" class="btn btn-outline-primary goListBtn"
+									onclick="${cri.perPageNum}">목록으로</button>
+								<button class="btn btn-outline-primary articleBtn"
 									onclick="location.href='article_Insert?num=${board.num}&member=${nickname}'">댓글작성
 								</button>
-								<button type="button" class="btn btn-outline-primary"
-									onclick="history.back()">뒤로가기</button>
+								
+								
+								
 								<!-- 	
 				<c:forEach var="article" items="${article }">
 					<thead>
@@ -102,13 +108,12 @@
 	</div>
 	<%@include file="include/js.jsp"%>
 </body>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 		
 		var formobj = $("form[role='form']");
 		console.log(formObj);
-		$(".btn-warning").on("click," function(){
+		$(".modyfyBtn").on("click," function(){
 			formObj.attr("action", "/board/modify");
 			formObj.attr("method", "get");
 			formObj.submit();

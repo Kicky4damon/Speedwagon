@@ -67,7 +67,7 @@ public String listAll(Locale locale, Model model) throws Exception {
 // 글 상세 확인하기
 
 @RequestMapping(value = "/detail_page", method = RequestMethod.GET)
-public void detail(@RequestParam("num") int num, Model model) throws Exception {
+public void detail(@RequestParam("num") int num, Model model, @ModelAttribute("cri") Criteria cri) throws Exception {
 	BoardDTO dto = service.board_detail(num);
 	dto.setCnt(dto.getCnt()+1);
 	service.board_update(dto);
@@ -75,6 +75,18 @@ public void detail(@RequestParam("num") int num, Model model) throws Exception {
 	model.addAttribute("board", service.board_detail(num));
 }
 //글 상세 확인 -> 돌아가기
+
+//글 삭제하기
+@RequestMapping(value = "/board_delete", method = RequestMethod.GET)
+public String boardDelete(@RequestParam("num") int num, RedirectAttributes rttr) throws Exception{
+
+	
+	logger.info("delete post.............");
+	service.board_delete(num);
+	rttr.addFlashAttribute("msg", "delete");
+	return "redirect:/listPage";
+}
+
 
 //글 수정 불러오기
 
