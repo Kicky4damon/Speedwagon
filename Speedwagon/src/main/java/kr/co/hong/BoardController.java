@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -115,20 +114,23 @@ public String modifyPOST(BoardDTO dto,RedirectAttributes rttr) throws Exception{
 // 글 수정 불러오기 Ver.2
 
 @RequestMapping(value = "/modifyPage" , method = RequestMethod.GET)
-public void modifyPagingGET(@RequestParam("num")int num, Model model)throws Exception{
-	
-model.addAttribute(service.board_detail(num));
+public void modifyPagingGET(@RequestParam("num")int num, Model model, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr)throws Exception{
+
+	rttr.addAttribute("page", cri.getPage());
+	rttr.addAttribute("pagePageNum", cri.getPerPageNum());
+	model.addAttribute(service.board_detail(num));
+	System.out.println(cri);
 }
 
 // 글 업데이트 Ver.2
 @RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
- public String modifyPagingPOST(BoardDTO dto , Criteria cri, RedirectAttributes rttr)throws Exception{
+ public String modifyPagingPOST(BoardDTO dto , @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr)throws Exception{
 	
 	
-	service.board_update(dto);
 	rttr.addAttribute("page" , cri.getPage());
 	rttr.addAttribute("perPageNum", cri.getPerPageNum());
 	rttr.addFlashAttribute("msg", "modify");
+	service.board_update(dto);
 	
 	return "redirect:/listPage";
 }
@@ -158,5 +160,6 @@ public void listPage(@ModelAttribute("cri")Criteria cri, Model model) throws Exc
 	
 	model.addAttribute("pageMaker", pageMaker);
 }
+
 
 }

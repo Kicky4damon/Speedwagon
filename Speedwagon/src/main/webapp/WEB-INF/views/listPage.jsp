@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" type="text/css" href="resources/css/icons/tabler-icons/tabler-icons.css" />
 
-<c:set var="path" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
 
 <head>
 <%@include file="include/head.jsp"%>

@@ -30,7 +30,7 @@
 						<h5 class="card-title fw-semibold mb-4">게시물 수정</h5>
 						<div class="card">
 							<div class="card-body">
-								<form role="form" method="post">
+								<form role="form" action='modifyPage' method="post">
 									<!--
 									<div class="mb-3">
 										<label for="selectCategory" class="form-label">카테고리</label> <select
@@ -59,11 +59,12 @@
 									<!-- onclick="history.back() -->
 									
 									<button type="submit" class="btn btn-outline-primary submitBtn">수정하기</button>
-									<button type="reset" class="btn btn-outline-primary">초기화</button>
+									<button type="reset" class="btn btn-outline-primary resetBtn">초기화</button>
 									
 									<input type='hidden' name='page' value="${cri.page}">
 									<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
-
+									
+									
 								</form>
 							</div>
 						</div>
@@ -75,25 +76,26 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			var formobj = $("form[role='form']");
+			
+			console.log(formObj);
+			$(".backlistBtn").on("click", function(){
+				self.location = "listPage?page=${cri.page }&perPageNum=${cri.perPageNum }";
+			});
+			
+			$(".submitBtn").on("click", function(){
+				
+				formObj.submit();
+			});
+		});
+		
 		function resize(obj) {
 			obj.style.height = '1px';
 			obj.style.height = (12 + obj.scrollHeight) + 'px';
 		}
 		
-		$(document).ready(function(){
-			
-			var formObj = $("form[role='form']");
-			
-			console.log(formObj);
-			$(".backlistBtn").on("click", function(){
-				self.location = "listPage?page=${cri.page}&perPageNum=${cri.perPageNum}";
-			});
-			
-			$(".submitBtn").on("click", function(){
-				formObj.submit();
-			});
-			
-		});
 	</script>
 </body>
 
