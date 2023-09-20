@@ -6,8 +6,8 @@
 <html lang="kr">
 
 <head>
-<%@include file="include/head.jsp"%>
 <title>ㅎㅎㅎ</title>
+<%@include file="include/head.jsp"%>
 </head>
 
 <body>
@@ -73,6 +73,7 @@
 			obj.style.height = (12 + obj.scrollHeight) + 'px';
 		}
 	</script>
+	<%@include file="include/js.jsp"%>
 </body>
 
 </html>

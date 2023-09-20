@@ -97,6 +97,7 @@
 		}
 		
 	</script>
+	<%@include file="include/js.jsp"%>
 </body>
 
 </html>

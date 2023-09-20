@@ -27,10 +27,10 @@
 					<i class="ti ti-search"></i>
 				</button>
 
-				<li class="nav-item dropdown"><a
-					class="nav-link nav-icon-hover" href="javascript:void(0)"
+				<li class="nav-item dropdown">
+				<a class="nav-link nav-icon-hover" href="javascript:void(0)"
 					id="drop2" data-bs-toggle="dropdown" aria-expanded="false"> <img
-						src="resources/images/profile/user-1.jpg" alt="" width="35"
+						src="${contextPath }/resources/images/profile/user-1.jpg" alt="" width="35"
 						height="35" class="rounded-circle">
 				</a>
 					<div
@@ -52,7 +52,8 @@
 							</a> <a href="./authentication-login.html"
 								class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
 						</div>
-					</div></li>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</nav>

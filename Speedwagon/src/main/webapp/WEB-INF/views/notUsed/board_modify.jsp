@@ -1,16 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
-<!doctype html>
-<html lang="kr">
 
 <head>
-<%@include file="include/head.jsp"%>
 <title>ㅎㅎㅎ</title>
+<%@include file="include/head.jsp"%>
 </head>
 
 <body>
+
 	<!--  Body Wrapper -->
 	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
 		data-navbarbg="skin6" data-sidebartype="full"
@@ -90,6 +89,7 @@
 		});
 		
 	</script>
+	<%@include file="include/js.jsp"%>
 </body>
 
 </html>

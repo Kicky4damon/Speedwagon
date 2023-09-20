@@ -24,28 +24,56 @@
 
 			<!-- nav -->
 			<%@include file="../include/nav.jsp"%>
-
-			<div class="container">
+			
+			<div class="container-fluid">
 				<div class="row">
-
-					<!-- 뭉탱이 -->
-					<div class="col-lg-9 mb-3">
-						<div class="row text-left mb-5">
-							<div class="col-lg-6 mb-3 mb-sm-0">
-								<div
-									class="dropdown bootstrap-select form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
-									style="width: 100%;">
-									<select
-										class="form-control form-control-lg bg-white bg-op-9 text-sm w-lg-50"
-										data-toggle="select" tabindex="-98">
+            <div class="card-body">
+			<div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+			<div class="card-item">
+			<select data-toggle="select" class="form-select form-select-sm bg-white bg-op-9 text-sm w-lg-50">
+			<option value="n"
+				<c:out value="${cri.searchType == null?'selected':''}"/>>
+				게시판 검색</option>
+			<option value="t"
+				<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
+				제목</option>
+			<option value="c"
+				<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
+				내용</option>
+			<option value="w"
+				<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
+				작성자</option>
+			<option value="tc"
+				<c:out value="${cri.searchType eq 'tc'?'selected':''}"/>>
+				제목 OR 내용</option>
+			<option value="cw"
+				<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
+				내용 OR 작성자</option>
+			<option value="tcw"
+				<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
+				제목 OR 내용 OR 작성자</option>	
+			</select>
+            <div class="card-item">
+			<input type="text" data-toggle='keyword' id="keywordInput" class="form-control form-control-sm" value='${cri.keyword}'>
+			<button id='searchbtn'>검색</button>
+			<button>id='newBtn'>게시물 쓰기</button>
+			</div>
+            </div>
+            
+			
+					<!-- 게시판 카테고리 -->
+					<div class="card-item">
+									
+							<select	data-toggle="select" class="form-select form-select-sm bg-white bg-op-9 text-sm w-lg-50" tabindex="-98">
 										<option>Categories</option>
 										<option>Learn</option>
 										<option>Share</option>
 										<option>Build</option>
 									</select>
-								</div>
-							</div>
-						</div>
+								
+                  </div>
+                </div>
+
 
 						<!-- 게시글 -->
 						<c:forEach items="${list }" var="BoardDTO">

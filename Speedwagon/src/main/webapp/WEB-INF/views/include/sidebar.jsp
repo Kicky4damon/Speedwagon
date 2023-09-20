@@ -7,7 +7,7 @@
 		<div
 			class="brand-logo d-flex align-items-center justify-content-between">
 			<a href="./index.html" class="text-nowrap logo-img"> <img
-				src="resources/images/logos/dark-logo.svg" width="180" alt="" />
+				src="${contextPath }/resources/images/logos/dark-logo.svg" width="180" alt="" />
 			</a>
 			<div
 				class="close-btn d-xl-none d-block sidebartoggler cursor-pointer"
@@ -93,7 +93,7 @@
 							Pro</a>
 					</div>
 					<div class="unlimited-access-img">
-						<img src="resources/images/backgrounds/rocket.png" alt=""
+						<img src="${contextPath }/resources/images/backgrounds/rocket.png" alt=""
 							class="img-fluid">
 					</div>
 				</div>
