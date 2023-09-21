@@ -75,4 +75,22 @@
 	]]>
 	</select>
 	
+	<select id="listSearch" resultType="BoardDTO">
+	<![CDATA[
+	 select *
+	 from board
+	 where num > 0
+	 order by num desc
+	 limit #{pageStart}, #{perPageNum}
+	 ]]>
+	</select>	
+	
+	<select id="listSearchCount" resultType="int">
+	<![CDATA[
+	select count(num)
+	from board
+	where num > 0
+	]]>
+	</select>
+	
 </mapper>

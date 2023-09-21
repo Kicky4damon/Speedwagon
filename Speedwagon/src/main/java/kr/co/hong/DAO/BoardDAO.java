@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.hong.DTO.BoardDTO;
 import kr.co.hong.DTO.Criteria;
+import kr.co.hong.DTO.SearchCriteria;
 
 public interface BoardDAO {
 
@@ -31,4 +32,8 @@ public interface BoardDAO {
 	/* 토탈 카운트 페이징*/
 	public int countPaging(Criteria cri)throws Exception;
 	
-}	
+	/* 검색 기능 */
+	public List<BoardDTO> listSearch(SearchCriteria cri)throws Exception;
+	/* 검색 결과 카운트 */
+	public int listSearchCount(SearchCriteria cri)throws Exception;
+}

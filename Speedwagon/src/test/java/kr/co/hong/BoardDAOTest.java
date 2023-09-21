@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import kr.co.hong.DAO.BoardDAO;
 import kr.co.hong.DTO.BoardDTO;
 import kr.co.hong.DTO.Criteria;
+import kr.co.hong.DTO.SearchCriteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -82,4 +83,23 @@ public class BoardDAOTest {
 		LOGGER.info(uriComponents2.toString());
 			
 	}
+	@Test
+	public void testDynamic1() throws Exception {
+		
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("글");
+		cri.setSearchType("t");
+		
+		LOGGER.info("================================================");
+		
+		List<BoardDTO> list = dao.listSearch(cri);
+		
+		for (BoardDTO boarddto : list) {
+			LOGGER.info(boarddto.getNum() + ": " + boarddto.getTitle());
+		}
+		LOGGER.info("================================================");
+		LOGGER.info("COUNT: " + dao.listSearchCount(cri));
+	}
+	
 }

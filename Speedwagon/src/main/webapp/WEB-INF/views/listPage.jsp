@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <head>
 <%@include file="include/head.jsp"%>
 </head>
@@ -120,7 +120,11 @@
 <script>
 	var result = '${msg}';
 	if (result == 'success') {
-		alert("게시물이 등록 되었습니다.");
+		Swal.fire(
+				  '게시물이 등록 되었습니다',
+				  'Ok를 누르면 목록으로 돌아갑니다',
+				  'success'
+				)
 	} else if (result == "modify") {
 		alert("게시물이 수정 되었습니다.");
 	} else if (result == "delete") {

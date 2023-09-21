@@ -7,3 +7,6 @@
 <script src="${contextPath }/resources/libs/simplebar/dist/simplebar.min.js"></script>
 <script src="${contextPath }/resources/libs/simplebar/dist/simplebar.min.css"></script>
 <script src="${contextPath }/resources/js/dashboard.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

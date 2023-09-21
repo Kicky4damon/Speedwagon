@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import kr.co.hong.DAO.BoardDAO;
 import kr.co.hong.DTO.BoardDTO;
 import kr.co.hong.DTO.Criteria;
+import kr.co.hong.DTO.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -78,7 +79,16 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlsession.selectOne(namespace+".countPaging", cri);
 	}
-	
-	
 
+	@Override
+	public List<BoardDTO> listSearch(SearchCriteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(namespace +".listSearch", cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(namespace +".listSearchCount", cri);
+	}
 }
