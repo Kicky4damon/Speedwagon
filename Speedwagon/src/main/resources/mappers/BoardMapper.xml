@@ -5,6 +5,35 @@
 
 <mapper namespace="kr.co.hong.mappers.BoardMapper">
 
+	<sql id ="search">
+		<if test="searchType != null" >
+		
+			<if test="searchType == 't'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			
+			<if test="searchType == 'c'.toString()">
+				and content like CONCAT('%', #{keyword}, '%')
+			</if>
+			
+			<if test="searchType == 'w'.toString()">
+				and member_nickname like CONCAT('%', #{keyword}, '%')
+			</if>
+			
+			<if test="searchType == 'tc'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%'))
+			</if>
+			
+			<if test="searchType == 'cw'.toString()">
+				and (content like CONCAT('%', #{keyword}, '%') OR member_nickname like CONCAT('%', #{keyword}, '%'))
+			</if>
+			
+			<if test="searchType == 'tcw'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%') OR content like CONCAT('%', #{keyword}, '%') OR member_nickname like CONCAT('%', #{keyword}, '%'))
+			</if>
+		</if>  
+	</sql>
+	
 	<!-- 게시판 전체 불러오기 -->
 	<select id="board_listAll" resultType="BoardDTO">
 		select *
@@ -19,10 +48,12 @@
 
 	<!-- 게시물 작성 -->
 	<insert id="board_write" parameterType="BoardDTO">
-		insert into board (title, content, member_nickname
+		insert into board (title,
+		content, member_nickname
 		)
-		values(#{title}, #{content}, #{member_nickname}
-	)
+		values(#{title}, #{content},
+		#{member_nickname}
+		)
 	</insert>
 
 	<!-- 게시물 수정 -->
@@ -34,9 +65,9 @@
 
 	<!-- 게시물 삭제 -->
 	<delete id="board_delete">
-		delete from board where num = #{num} 
+		delete from board where num = #{num}
 	</delete>
-	
+
 	<!-- 페이징 처리 -->
 	<select id="listPage" resultType="BoardDTO">
 	<![CDATA[
@@ -49,7 +80,7 @@
 	limit #{page}, 10
 	]]>
 	</select>
-	
+
 	<!-- 페이징 정보 담는 Criteria = 기준 -->
 	<select id="listCriteria" resultType="BoardDTO">
 	<![CDATA[
@@ -62,8 +93,8 @@
 	limit #{pageStart}, #{perPageNum}
 	]]>
 	</select>
-	
-	<!-- 보드 토탈  -->
+
+	<!-- 보드 토탈 -->
 	<select id="countPaging" resultType="int">
 	<![CDATA[
 	select
@@ -75,22 +106,31 @@
 	]]>
 	</select>
 	
+  	<!-- 보드 페이지 넘버  -->
+  	
 	<select id="listSearch" resultType="BoardDTO">
 	<![CDATA[
 	 select *
 	 from board
 	 where num > 0
+	 ]]>
+	 
+	<include refid="search"></include>
+	
+	<![CDATA[
 	 order by num desc
 	 limit #{pageStart}, #{perPageNum}
 	 ]]>
-	</select>	
-	
+	</select>
+
+	<!-- 검색 결과 카운트  -->
 	<select id="listSearchCount" resultType="int">
 	<![CDATA[
 	select count(num)
 	from board
 	where num > 0
 	]]>
+	<include refid="search"></include>
 	</select>
 	
-</mapper>
+	</mapper>

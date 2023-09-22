@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.hong.DTO.BoardDTO;
 import kr.co.hong.DTO.Criteria;
+import kr.co.hong.DTO.SearchCriteria;
 
 public interface BoardService {
 
@@ -27,4 +28,13 @@ public interface BoardService {
 	
 	/* 전체 게시물 숫자 계산 */
 	public int listCountCriteria(Criteria cri) throws Exception;
+	
+	/* 검색 크리테리아 */
+	public List<BoardDTO> listSearchCriteria(SearchCriteria cri) throws Exception;
+	
+	/* 검색 크리테리아 카운트 */
+	public int listSearchCount(SearchCriteria cri) throws Exception;
+
+	
 }
+

@@ -46,7 +46,7 @@ public String BoardSubmitPOST(BoardDTO board, RedirectAttributes rttr) throws Ex
 	
 	rttr.addFlashAttribute("msg", "success");
 	
-	return "redirect:/listPage";
+	return "redirect:/Search/list";
 	
 	
 }
@@ -89,7 +89,7 @@ public String boardDelete(@RequestParam("num") int num, RedirectAttributes rttr,
 	rttr.addFlashAttribute("msg", "delete");
 	System.out.println(cri);
 	
-	return "redirect:/listPage";
+	return "redirect:/Search/list";
 }
 
 /*//글 수정 불러오기
@@ -132,7 +132,7 @@ public void modifyPagingGET(@RequestParam("num")int num, Model model, @ModelAttr
 	rttr.addFlashAttribute("msg", "modify");
 	service.board_update(dto);
 	
-	return "redirect:/listPage";
+	return "redirect:/Search/list";
 }
 
 // 글 페이지 번호 확인

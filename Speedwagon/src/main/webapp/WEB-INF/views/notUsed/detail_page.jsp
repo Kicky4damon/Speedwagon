@@ -70,7 +70,7 @@
 								</form>
 
 								<button type="submit" class="btn btn-outline-primary goListBtn" formmethod="POST"
-									onclick="location.href='listPage?page=${cri.page}&perPageNum=${cri.perPageNum}'">목록으로</button>
+									onclick="location.href='${contextPath }/Search/list?page=${cri.page}&perPageNum=${cri.perPageNum}'">목록으로</button>
 									
 								<button type="submit" class="btn btn-outline-primary modifyBtn" formmethod="POST"
 									onclick="location.href='modifyPage?num=${board.num }&page=${cri.page}&perPageNum=${cri.perPageNum}'">수정하기

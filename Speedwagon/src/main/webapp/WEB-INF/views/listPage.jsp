@@ -56,7 +56,7 @@
 									<span class="k1"> No. ${BoardDTO.num }</span>
 									
 										<h5><strong>
-											<a href='detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}' class="text-primary">${BoardDTO.title }</a>
+											<a href='/Search/detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}' class="text-primary">${BoardDTO.title }</a>
 										</strong></h5>
 										<!-- 댓글 미리보기 예시 -->
 										<!-- <div class="text-sm op-5"> <a class="text-black mr-2" href="#">#C++</a></div> -->
@@ -120,15 +120,17 @@
 <script>
 	var result = '${msg}';
 	if (result == 'success') {
-		Swal.fire(
-				  '게시물이 등록 되었습니다',
-				  'Ok를 누르면 목록으로 돌아갑니다',
-				  'success'
-				)
+		Swal.fire('게시물이 등록 되었습니다.',
+				'목록으로 돌아갑니다',
+				'success')
 	} else if (result == "modify") {
-		alert("게시물이 수정 되었습니다.");
+		Swal.fire('게시물이 수정 되었습니다.',
+				'목록으로 돌아갑니다',
+				'success')
 	} else if (result == "delete") {
-		alert("게시물이 삭제 되었습니다.");
+		Swal.fire('게시물이 삭제 되었습니다.',
+				'목록으로 돌아갑니다',
+				'success')
 	}
 </script>
 

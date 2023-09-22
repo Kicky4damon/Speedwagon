@@ -76,8 +76,7 @@
 								<div class="navbar">
 									<div class="col-auto ml-auto">
 
-										<select data-toggle="select"
-											class="form-select form-select-sm bg-white bg-op-9 text-sm w-lg-50"
+										<select class="form-select form-select-sm bg-white bg-op-9 text-sm w-lg-50"
 											tabindex="-98">
 											<option>Categories</option>
 											<option>Learn</option>
@@ -102,7 +101,7 @@
 
 										<h5>
 											<strong> <a
-												href='detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}'
+												href='${contextPath }/Search/detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}'
 												class="text-primary">${BoardDTO.title }</a>
 											</strong>
 										</h5>
@@ -128,7 +127,6 @@
 						<!-- /-게시글 -->
 
 					</div>
-					<!-- /뭉탱이 -->
 
 				</div>
 				<div>
@@ -138,7 +136,7 @@
 							<!-- 페이징 Prev 버튼 넘어갈 목록이 있으면 활성/비활  -->
 							<c:if test="${pageMaker.prev}">
 								<li class="page-item"><a class="page-link"
-									href="list?=${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+									href="list=${pageMaker.makeSearch(pageMaker.startPage - 1) }"
 									aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 							</c:if>
 
@@ -168,35 +166,18 @@
 		var result = '${msg}';
 		if (result == 'success') {
 			Swal.fire('게시물이 등록 되었습니다.',
-					'목록으로 돌아갑니다'
-					'seccess');
+					'목록으로 돌아갑니다',
+					'success')
 		} else if (result == "modify") {
-			alert("게시물이 수정 되었습니다.");
+			Swal.fire('게시물이 수정 되었습니다.',
+					'목록으로 돌아갑니다',
+					'success')
 		} else if (result == "delete") {
-			alert("게시물이 삭제 되었습니다.");
+			Swal.fire('게시물이 삭제 되었습니다.',
+					'목록으로 돌아갑니다',
+					'success')
 		}
 		
-		$().ready(function () {
-            $("#searchBtn").click(function () {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'center-center',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                });
-
-                Toast.fire({
-                    icon: 'success',
-                    title: '선택한 조건으로 검색을 완료하였습니다.'
-                });
-            });
-        });
-
 		$(document).ready(
 				function() {
 					$('#searchBtn').on(

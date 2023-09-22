@@ -34,6 +34,7 @@ public interface BoardDAO {
 	
 	/* 검색 기능 */
 	public List<BoardDTO> listSearch(SearchCriteria cri)throws Exception;
+	
 	/* 검색 결과 카운트 */
 	public int listSearchCount(SearchCriteria cri)throws Exception;
 }

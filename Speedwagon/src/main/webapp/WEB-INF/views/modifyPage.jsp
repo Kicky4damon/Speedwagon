@@ -82,7 +82,7 @@
 			
 			console.log(formObj);
 			$(".backlistBtn").on("click", function(){
-				self.location = "listPage?page=${cri.page }&perPageNum=${cri.perPageNum }";
+				self.location = "Search/list?page=${cri.page }&perPageNum=${cri.perPageNum }";
 			});
 			
 			$(".submitBtn").on("click", function(){

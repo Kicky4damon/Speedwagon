@@ -22,7 +22,7 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">Home</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./" aria-expanded="false"> <span> <i
+					href="${contextPath }/" aria-expanded="false"> <span> <i
 							class="ti ti-layout-dashboard"></i>
 					</span> <span class="hide-menu">대시보드</span>
 				</a></li>
@@ -30,12 +30,12 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">TEST</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./submit" aria-expanded="false"> <span> <i
+					href="${contextPath }/submit" aria-expanded="false"> <span> <i
 							class="ti ti-article"></i>
 					</span> <span class="hide-menu">글 쓰기</span>
 				</a></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="./listPage" aria-expanded="false"> <span> <i
+					href="${contextPath }/Search/list" aria-expanded="false"> <span> <i
 							class="ti ti-alert-circle"></i>
 					</span> <span class="hide-menu">글 목록</span>
 				</a></li>
