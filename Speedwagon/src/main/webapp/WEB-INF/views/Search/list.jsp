@@ -101,7 +101,7 @@
 
 										<h5>
 											<strong> <a
-												href='${contextPath }/Search/detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}'
+												href='detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}'
 												class="text-primary">${BoardDTO.title }</a>
 											</strong>
 										</h5>

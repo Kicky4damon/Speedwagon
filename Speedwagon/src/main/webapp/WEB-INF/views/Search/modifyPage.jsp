@@ -6,7 +6,7 @@
 <html lang="kr">
 
 <head>
-<%@include file="include/head.jsp"%>
+<%@include file="../include/head.jsp"%>
 <title>ㅎㅎㅎ</title>
 </head>
 
@@ -17,13 +17,13 @@
 		data-sidebar-position="fixed" data-header-position="fixed">
 
 		<!-- Sidebar Start -->
-		<%@include file="include/sidebar.jsp"%>
+		<%@include file="../include/sidebar.jsp"%>
 		<!--  Sidebar End -->
 
 		<!--  Main wrapper -->
 		<div class="body-wrapper">
 			<!--  Header Start -->
-			<%@include file="include/nav.jsp"%>
+			<%@include file="../include/nav.jsp"%>
 			<div class="container-fluid">
 				<div class="card">
 					<div class="card-body">
@@ -42,29 +42,35 @@
 										<div id="subject" class="form-text">카테고리를 선택해주세요</div>
 									</div>-->
 									<div class="mb-3">
-										<label for="subjectmodify" class="form-label">제목</label>
-										<input type="text" name="title" class="form-control" id="subject_input"
-											aria-describedby="subjectHelp" value="${boardDTO.title }">
+										<label for="subjectmodify" class="form-label">제목</label> <input
+											type="text" name="title" class="form-control"
+											id="subject_input" aria-describedby="subjectHelp"
+											value="${boardDTO.title }">
 										<div id="subject" class="form-text">수정 할 텍스트를 입력해주세요.</div>
 									</div>
 									<div class="mb-3">
 										<label for="Contentmodify" class="form-label">본문내용</label>
 										<div class="text-section col pb-10">
-											<textarea id="contentmodify" name="content"class="form-control"
-												 onkeydown="resize(this)" onkeyup="resize(this)">${boardDTO.content }</textarea>
+											<textarea id="contentmodify" name="content"
+												class="form-control" onkeydown="resize(this)"
+												onkeyup="resize(this)">${boardDTO.content }</textarea>
 										</div>
 									</div>
-									<button type="button" class="btn btn-outline-primary backlistBtn">뒤로가기</button>
-									
+									<button type="button"
+										class="btn btn-outline-primary backlistBtn">뒤로가기</button>
+
 									<!-- onclick="history.back() -->
-									
+
 									<button type="submit" class="btn btn-outline-primary submitBtn">수정하기</button>
 									<button type="reset" class="btn btn-outline-primary resetBtn">초기화</button>
-									
-									<input type='hidden' name='page' value="${cri.page}">
-									<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
-									
-									
+
+									<input type='hidden' name='page' value="${cri.page}"> <input
+										type='hidden' name='perPageNum' value="${cri.perPageNum}">
+									<input type='hidden' name='searchType'
+										value="${cri.searchType}"> <input type='hidden'
+										name='keyword' value="${cri.keyword}">
+
+
 								</form>
 							</div>
 						</div>
@@ -76,28 +82,32 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			
-			var formobj = $("form[role='form']");
-			
-			console.log(formObj);
-			$(".backlistBtn").on("click", function(){
-				self.location = "Search/list?page=${cri.page }&perPageNum=${cri.perPageNum }";
-			});
-			
-			$(".submitBtn").on("click", function(){
-				
-				formObj.submit();
-			});
-		});
-		
+		$(document)
+				.ready(
+						function() {
+
+							var formobj = $("form[role='form']");
+
+							console.log(formObj);
+							$(".backlistBtn")
+									.on(
+											"click",
+											function() {
+												self.location = "Search/list?page=${cri.page }&perPageNum=${cri.perPageNum }&searchType=${cri.searchType}&keyword=${cri.keyword}";
+											});
+
+							$(".submitBtn").on("click", function() {
+
+								formObj.submit();
+							});
+						});
+
 		function resize(obj) {
 			obj.style.height = '1px';
 			obj.style.height = (12 + obj.scrollHeight) + 'px';
 		}
-		
 	</script>
-	<%@include file="include/js.jsp"%>
+	<%@include file="../include/js.jsp"%>
 </body>
 
 </html>
