@@ -101,7 +101,7 @@
 
 										<h5>
 											<strong> <a
-												href='detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}'
+												href='detail_page${pageMaker.makeQuery(pageMaker.cri.page)}&num=${BoardDTO.num}&searchType=${cri.searchType}&keyword=${cri.keyword}'
 												class="text-primary">${BoardDTO.title }</a>
 											</strong>
 										</h5>

@@ -57,11 +57,14 @@
 										</div>
 									</div>
 									<button type="button"
-										class="btn btn-outline-primary backlistBtn">뒤로가기</button>
-
-									<!-- onclick="history.back() -->
-
+										class="btn btn-outline-primary backlistBtn" id="backlistBtn"
+										onclick="location.href='list?page=${cri.page }&perPageNum=${cri.perPageNum }&searchType=${cri.searchType}&keyword=${cri.keyword}'">목록으로</button>
+									<button class="btn btn-outline-primary historybackBtn"
+										type="button" onclick="history.back()">뒤로가기</button>
 									<button type="submit" class="btn btn-outline-primary submitBtn">수정하기</button>
+									<button type="submit" class="btn btn-outline-primary removeBtn" formmethod="POST"
+									onclick="location.href='delete_page?num=${board.num}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">삭제하기
+								</button>
 									<button type="reset" class="btn btn-outline-primary resetBtn">초기화</button>
 
 									<input type='hidden' name='page' value="${cri.page}"> <input
@@ -82,26 +85,6 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-
-							var formobj = $("form[role='form']");
-
-							console.log(formObj);
-							$(".backlistBtn")
-									.on(
-											"click",
-											function() {
-												self.location = "Search/list?page=${cri.page }&perPageNum=${cri.perPageNum }&searchType=${cri.searchType}&keyword=${cri.keyword}";
-											});
-
-							$(".submitBtn").on("click", function() {
-
-								formObj.submit();
-							});
-						});
-
 		function resize(obj) {
 			obj.style.height = '1px';
 			obj.style.height = (12 + obj.scrollHeight) + 'px';

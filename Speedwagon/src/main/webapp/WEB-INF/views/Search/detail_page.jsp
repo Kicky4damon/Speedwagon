@@ -72,17 +72,17 @@
 								</form>
 
 								<button type="submit" class="btn btn-outline-primary goListBtn" formmethod="POST"
-									onclick="location.href='${contextPath }/Search/list?page=${cri.page}&perPageNum=${cri.perPageNum}'">목록으로</button>
+									onclick="location.href='${contextPath }/Search/list?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">목록으로</button>
 									
 								<button type="submit" class="btn btn-outline-primary modifyBtn" formmethod="POST"
-									onclick="location.href='${contextPath }/Search/modifyPage?num=${board.num }&page=${cri.page}&perPageNum=${cri.perPageNum}'">수정하기
+									onclick="location.href='${contextPath }/Search/modifyPage?num=${board.num }&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">수정하기
 									
 								<!--  onclick="location.href='modifyPage?num=${board.num}'">수정하기-->
 								
 								</button>
 								
 								<button type="submit" class="btn btn-outline-primary removeBtn" formmethod="POST"
-									onclick="location.href='delete_page?num=${board.num}&page=${cri.page}&perPageNum=${cri.perPageNum}'">삭제하기
+									onclick="location.href='delete_page?num=${board.num}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">삭제하기
 								</button>
 								<button type="submit" class="btn btn-outline-primary articleBtn" formmethod="POST"
 									onclick="location.href='article_Insert?num=${board.num}&member=${nickname}'">댓글작성

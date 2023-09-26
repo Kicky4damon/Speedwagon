@@ -49,9 +49,15 @@ public class SearchBoardController {
 	
 	// 게시물 상세 불러오기
 	@RequestMapping(value ="/detail_page", method = RequestMethod.GET)
-	public void read(@RequestParam("num") int num, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+	public void read(@RequestParam("num") int num, @ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception{
 		
 		model.addAttribute("board", service.board_detail(num));
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
 		
 	}
 	
@@ -75,8 +81,14 @@ public class SearchBoardController {
 	//게시물 수정
 	
 	@RequestMapping(value ="/modifyPage", method = RequestMethod.GET)
-	public void modifyPagingGET(int num, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+	public void modifyPagingGET(int num, @ModelAttribute("cri") SearchCriteria cri, Model model, RedirectAttributes rttr) throws Exception{
 		model.addAttribute(service.board_detail(num));
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+	
 		
 	}
 	
@@ -92,11 +104,31 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg", "modify");
 		
+		logger.info(rttr.toString());
+		
+		return "redirect:list";
+	}
+	
+	@RequestMapping(value="/submitPage" , method = RequestMethod.GET)
+	public void submitGET() throws Exception{
+		
+		logger.info("sumbit get ...... ");
+
+	}
+	
+	@RequestMapping(value = "/submitPage" , method = RequestMethod.POST)
+	public String submitPOST(BoardDTO board, RedirectAttributes rttr)throws Exception{
+		board.setMember_nickname("koko");
+		logger.info("submit post .....");
+		logger.info(board.toString());
+		
+		service.board_write(board);
+		
+		rttr.addFlashAttribute("msg", "success");
+		
 		return "redirect:list";
 	}
 }
-
-
 	
 
 

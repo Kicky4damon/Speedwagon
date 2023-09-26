@@ -30,7 +30,7 @@
 					class="ti ti-dots nav-small-cap-icon fs-4"></i> <span
 					class="hide-menu">TEST</span></li>
 				<li class="sidebar-item"><a class="sidebar-link"
-					href="${contextPath }/submit" aria-expanded="false"> <span> <i
+					href="${contextPath }/Search/submitPage" aria-expanded="false"> <span> <i
 							class="ti ti-article"></i>
 					</span> <span class="hide-menu">글 쓰기</span>
 				</a></li>
